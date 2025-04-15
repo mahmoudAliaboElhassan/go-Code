@@ -50,28 +50,27 @@ func main() {
     // // }
 
     // // switch
-    // day:="monday"
+    day:="monday"
     // if(day=="monday"){
     //     fmt.Println("you suggested right")
     // }else {
     //     fmt.Println("you suggested false")
     // }
-    // switch day{
-    //     // switch has break inside it
-    // case "saturday":
-    //     fmt.Println("day is saturday") 
-    //     fallthrough // Fall through to the next case
+    switch day{
+        // switch has break inside it
+    case "saturday":
+        fmt.Println("day is saturday") 
+        fallthrough // Fall through to the next case
 
-    // case "monday":
-    //     fmt.Println("day is monday")
-    //     fallthrough // make break does not work
+    case "monday":
+        fmt.Println("day is monday")
+        fallthrough // make break does not work
 
-    // case "Friday":
-    //     fmt.Println("Weekend is coming!")
-    //     fallthrough // Fall through to the next case
-    // default:
-    //     fmt.Println("Not a day")
-    // }
+    case "Friday":
+        fmt.Println("Weekend is coming!")
+     default:
+        fmt.Println("Not a day")
+    }
 
     // // array    
     // var arr [3]string
@@ -85,8 +84,9 @@ func main() {
 
     // myarr:=[3] int{1,3,5}
     // fmt.Println(myarr)
-    // Cities:=[...]string{"m","a","h","m","o","u","d"} // dynamic length
-    // fmt.Println(Cities)
+    fmt.Printf("%T", "Mahmoud")
+    Cities:=[...]string{"m","a","h","m","o","u","d"} // dynamic length
+    fmt.Println(Cities)
     // theArr:=[2][2] int{
     //     {1,2},
     //     {3,4},
@@ -117,6 +117,10 @@ func main() {
         // triggerPanic()
         // fmt.Println("Program continues after panic") // This line won't be reached if panic isn't recovered
 
+        // declare variable within if condition
+        if age:=50;age==50{
+            fmt.Println("Yes age is 50")
+        }
         fmt.Println("Starting the program")
         safeTriggerPanic()
         fmt.Println("Program continues after panic")
