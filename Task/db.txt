@@ -19,5 +19,9 @@ INSERT INTO Employee (Name, City, Age) VALUES
 
 
 installing packages
+
+go get github.com/joho/godotenv
 go get fyne.io/fyne/v2@latest
 go mod tidy
+
+

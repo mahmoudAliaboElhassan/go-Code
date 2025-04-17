@@ -3,26 +3,43 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	"log"
 	"os"
 	"strconv"
 
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/joho/godotenv"
 )
 
 var sqlDB *sql.DB
 
+// Load .env file
+func loadEnv() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("❌ Error loading .env file")
+	}
+}
+
+
 func connect() {
+	loadEnv()
+	user := os.Getenv("DB_USER")
+	pass := os.Getenv("DB_PASS")
+	host := os.Getenv("DB_HOST")
+	port := os.Getenv("DB_PORT")
+	name := os.Getenv("DB_NAME")
+
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", user, pass, host, port, name)
+
 	var err error
-	sqlDB, err = sql.Open("mysql", "root:mahmoud123@tcp(127.0.0.1:3306)/company")
+	sqlDB, err = sql.Open("mysql", dsn)
 	if err != nil {
-		panic(err)
+		log.Fatal("❌ Connection error:", err)
 	}
-
-	err = sqlDB.Ping()
-	if err != nil {
-		panic(err)
+	if err := sqlDB.Ping(); err != nil {
+		log.Fatal("❌ Ping error:", err)
 	}
-
 	fmt.Println("✅ Connected to MySQL!")
 }
 
@@ -184,7 +201,7 @@ func main() {
 			orderEmployeesByAge(order)
 
 		case 0:
-			fmt.Println("👋 Exiting...")
+			fmt.Println("👋 Exiting Bye...")
 			os.Exit(0)
 
 		default:
