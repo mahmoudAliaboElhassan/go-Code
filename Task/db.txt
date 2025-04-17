@@ -1,0 +1,23 @@
+create database company;
+use company;
+
+
+CREATE TABLE Employee (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(100),
+    City VARCHAR(100),
+    Age INT
+);
+
+
+INSERT INTO Employee (Name, City, Age) VALUES
+('Ahmed Hassan', 'Cairo', 32),
+('Mona Adel', 'Alexandria', 27),
+('Youssef Ali', 'Giza', 40),
+('Fatma Mostafa', 'Mansoura', 35),
+('Omar Mahmoud', 'Tanta', 29);
+
+
+installing packages
+go get fyne.io/fyne/v2@latest
+go mod tidy
