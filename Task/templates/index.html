@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Employees</title>
+  </head>
+  <body>
+    <h1>Employee List</h1>
+    <a href="/add">Add New Employee</a>
+    <form method="GET" action="/">
+        <input type="text" name="search" value="{{.SearchValue}}" placeholder="Search by name or city" />
+        <select name="order">
+          <option value="id" {{if eq .OrderBy "id"}}selected{{end}}>ID</option>
+          <option value="name" {{if eq .OrderBy "name"}}selected{{end}}>Name</option>
+          <option value="city" {{if eq .OrderBy "city"}}selected{{end}}>City</option>
+          <option value="age" {{if eq .OrderBy "age"}}selected{{end}}>Age</option>
+        </select>
+        <button type="submit">Search</button>
+      </form>
+      
+      <p>Total Matching Employees: {{.TotalCount}}</p>
+      
+      <table>
+        <tr><th>ID</th><th>Name</th><th>City</th><th>Age</th></tr>
+        {{range .Employees}}
+        <tr>
+          <td>{{.ID}}</td><td>{{.Name}}</td><td>{{.City}}</td><td>{{.Age}}</td>
+        </tr>
+        {{end}}
+      </table>
+      
+  </body>
+</html>
